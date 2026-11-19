@@ -1,0 +1,2 @@
+record_id,employee_name,department,n_entries,chi_square,share_digits_5_to_9,benford_share_digits_5_to_9
+E021,Courtney Velasquez,General Ledger,300,406.10,0.817,0.301
