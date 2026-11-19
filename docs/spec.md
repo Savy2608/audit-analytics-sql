@@ -30,6 +30,7 @@ audit-analytics-sql/
 ├── requirements.txt          # psycopg, pandas, faker, python-dotenv, pytest (pinned)
 ├── generate_data.py          # synthetic data + planted anomalies, fixed seed
 ├── run_checks.py             # schema, COPY load, validation, checks, scorecard
+├── benchmark.py              # ~1M-row run, timings with and without indexes
 ├── sql/
 │   ├── 00_schema.sql         # tables with primary keys, foreign keys, indexes
 │   ├── 01_duplicate_payments.sql
@@ -40,7 +41,7 @@ audit-analytics-sql/
 │   ├── 06_inactive_vendor_payments.sql
 │   └── 07_benford_first_digit.sql
 ├── data/                     # generated CSVs, ground_truth.csv, near_misses.csv (committed)
-├── results/                  # one CSV per check + scorecard.csv (committed)
+├── results/                  # one CSV per check, scorecard.csv, benchmark results (committed)
 ├── tests/                    # pytest on a tiny generated dataset in a separate database
 ├── docs/spec.md
 └── .github/workflows/tests.yml   # Postgres 16 service container in CI
@@ -128,7 +129,17 @@ Honesty rules:
 - Never type numbers into the README by hand. `python run_checks.py --update-readme` writes the summary, the checks table, the scorecard and the examples from a real run of the committed dataset.
 - The README gives one trade-off per check: what a tighter rule would miss, and what a looser rule would add.
 
-## 6. Engineering rules
+## 6. Scale benchmark
+
+`benchmark.py` checks that the queries still work at a realistic size:
+
+- It generates about a million rows with the same seed, keeping the default ratios: 2,000 employees, 7,500 vendors, 300,000 invoices and 410,000 journal entries. The data goes into a temporary directory and is never committed.
+- It runs the reconciliation gate and scores every check.
+- It times every check (median of 3 runs after a warm-up), first without the secondary indexes and then with them.
+- It saves `EXPLAIN (ANALYZE, BUFFERS)` output for check 1 in both states.
+- Results go to `results/benchmark.csv`. `--update-readme` writes the README's Scale table from that run.
+
+## 7. Engineering rules
 
 - **Reproducible:** the seed (default 42) and table sizes are CLI options, and the same seed always produces byte-identical CSVs. Package versions are pinned, because Faker output can change between versions.
 - **Readable SQL:** one check per file, CTEs with clear names, and a 3-5 line comment at the top stating the risk, the rule and the threshold. No clever one-liners.
@@ -139,19 +150,21 @@ Honesty rules:
   - scorecard math
 - **CI:** GitHub Actions runs on every push and pull request. It runs pytest against a Postgres 16 service, then reruns the full pipeline and fails if `data/` or `results/` differ from the committed files.
 
-## 7. README contents
+## 8. README contents
 
 1. A one-paragraph summary with the headline result
-2. How to run
-3. The data model
-4. A table of checks (risk, rule, precision, recall)
-5. Near-misses per check
-6. The full scorecard
-7. Example flagged records: two planted cases per check, plus one false positive where the check has any
-8. Design trade-offs
-9. Limitations: synthetic data, one company and one year, a simple Benford test, exact matching only, and how the checks interact
+2. Who would use this: what the data is for, who uses it, and how often it runs
+3. How to run
+4. The data model
+5. A table of checks (risk, rule, precision, recall)
+6. Near-misses per check
+7. The full scorecard
+8. Example flagged records: two planted cases per check, plus one false positive where the check has any
+9. Scale results and what they showed
+10. Design trade-offs
+11. Limitations: synthetic data, one company and one year, a simple Benford test, exact matching only, and how the checks interact
 
-## 8. Design decisions
+## 9. Design decisions
 
 Decisions made during the build, and why:
 
@@ -160,3 +173,4 @@ Decisions made during the build, and why:
 - **Near-misses are stored separately** (`near_misses.csv`) so the tests can assert that they are never flagged.
 - **Check 4 ignores the `source` label**, because a mislabelled manual entry is exactly what the check should catch.
 - **The reconciliation is a hard gate**, so no check ever runs on data that does not tie out.
+- **Check 5 uses two equality joins instead of one `OR` join.** The benchmark showed that `ON address = ... OR bank_account = ...` forces a nested loop over every vendor-employee pair. Two equality joins combined with `UNION ALL` can use hash joins and return the same rows.

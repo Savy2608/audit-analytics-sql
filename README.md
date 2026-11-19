@@ -15,6 +15,12 @@ are reported as produced, not tuned away.
 
 All data is synthetic and generated from a fixed seed. No real company data is used.
 
+## Who would use this
+
+- **What the data is for:** testing accounts-payable and journal-entry controls on the full population of transactions instead of a sample, and getting a ranked list of exceptions to review.
+- **Who uses it:** internal auditors planning and running control tests, and controllers or accounting managers who clear the exceptions.
+- **How often it runs:** monthly after the books are closed, or continuously (daily) in a continuous-auditing setup. The checks are plain SQL, so they can be scheduled next to the ledger database.
+
 ## How to run
 
 Requirements: Python 3.11+ and PostgreSQL 16 (via Docker or a local install).
@@ -177,12 +183,38 @@ Two planted cases per check, plus one false positive where the check has any. `p
 | E021 | General Ledger | 300 | 389.11 | 0.810 | 0.301 | yes |
 <!-- END:examples -->
 
+## Scale
+
+The committed dataset is small so that CI can verify it byte for byte. `benchmark.py` generates a
+dataset of about a million rows into a temporary directory (it is never committed), runs every check
+with and without the secondary indexes, and writes `results/benchmark.csv`.
+
+<!-- BEGIN:benchmark -->
+Measured with `python benchmark.py` on **1,009,072 rows** (300,000 invoices, 289,572 payments, 410,000 journal entries, 7,500 vendors, 2,000 employees; same seed and planted anomalies). Machine: Apple M5 Pro, PostgreSQL 16.16, local server. Generating the data took 8.3 s and loading it with `COPY` took 16.4 s. Each timing is the median of 3 runs after a warm-up.
+
+| check_name | flagged | precision | recall | ms_without_secondary_indexes | ms_with_secondary_indexes |
+|---|---|---|---|---|---|
+| duplicate_payments | 28 | 0.893 | 1.000 | 435.70 | 119.10 |
+| split_invoices | 269 | 0.178 | 1.000 | 563.10 | 370.40 |
+| self_approval | 40 | 1.000 | 1.000 | 13.10 | 12.30 |
+| weekend_round_entries | 30 | 1.000 | 1.000 | 12.20 | 12.20 |
+| vendor_employee_match | 5 | 1.000 | 1.000 | 67.90 | 61.70 |
+| inactive_vendor_payments | 12 | 1.000 | 1.000 | 8.80 | 8.40 |
+| benford_first_digit | 5 | 0.200 | 1.000 | 157.40 | 159.00 |
+<!-- END:benchmark -->
+
+What the benchmark showed:
+
+- **An `OR` in a join condition does not scale.** The first version of check 5 joined vendors to employees `ON address = ... OR bank_account = ...`. Postgres cannot hash-join on an `OR`, so it compared every vendor with every employee and ran the address normalisation for each pair. That took tens of seconds at this size. Rewriting it as two equality joins combined with `UNION ALL` brought it down to tens of milliseconds, with identical output.
+- **The composite index helps check 1 most.** `payments (vendor_id, amount_usd, payment_date)` matches the window's `PARTITION BY vendor_id, amount_usd ORDER BY payment_date`. Without it, Postgres sorts every payment and the sort spills to disk (`external merge`). With it, Postgres reads the index in order and only needs a small in-memory `Incremental Sort`. Query plans before and after: [`results/explain_01_no_indexes.txt`](results/explain_01_no_indexes.txt), [`results/explain_01_with_indexes.txt`](results/explain_01_with_indexes.txt). Checks that scan a whole table (Benford, self-approval) gain little or nothing from indexes.
+- **Precision changes with scale, in ways you can explain.** With hundreds of accountants, a p < 0.01 Benford test is expected to flag a few honest people by chance (multiple testing). With hundreds of thousands of payments, a few unrelated invoices share a vendor and an exact amount. Both are reported as produced.
+
 ## Design trade-offs
 
 What a tighter rule would miss, and what a looser one would add:
 
 1. **Duplicate payments.** Tighter (same day only) misses duplicates paid a few days apart in a later batch. Looser (30+ days) starts flagging legitimate recurring bills such as rent.
-2. **Split invoices.** Tighter (also require each invoice to be close to the limit, e.g. > 2,500) cuts the noise from busy vendors but misses splits into many small pieces. Looser (drop the same-clerk condition, the first-draft rule described in `docs/spec.md` section 8) flags many more invoices, because busy vendors legitimately send several invoices a week.
+2. **Split invoices.** Tighter (also require each invoice to be close to the limit, e.g. > 2,500) cuts the noise from busy vendors but misses splits into many small pieces. Looser (drop the same-clerk condition, the first-draft rule described in `docs/spec.md` section 9) flags many more invoices, because busy vendors legitimately send several invoices a week.
 3. **Self-approval.** There is no threshold to tune. A looser version that also flags approvers who report to the creator would need an org chart that this dataset does not have.
 4. **Weekend / round entries.** Tighter (only multiples of 10,000) misses smaller round adjustments. Looser (any weekend entry, round or not) flags every automated month-end batch.
 5. **Vendor-employee match.** Tighter (bank account only) misses fake vendors that use a home address. Looser (fuzzy address matching) catches typos but also flags neighbours and shared office buildings.
@@ -205,16 +237,17 @@ rules are precise, but they do not show how they behave on real-world noise.
 - **Simple Benford test.** It looks at the first digit only, uses chi-square with a fixed p-value and needs 100+ entries per employee. It does not use second-digit or MAD tests and does not correct for multiple testing beyond the strict threshold.
 - **Checks interact.** Round amounts (check 4) are part of the same population that the Benford test (check 7) looks at. With some seeds, an honest accountant who posts many round accruals ends up just over the chi-square cutoff. Two genuinely different invoices can also share a vendor and an exact amount by chance and be flagged by check 1. Both are honest false positives that show up with other seeds; seed 42 happens to have none.
 - **Exact matching only.** Duplicate payments need identical amounts, and vendor matching needs identical normalised addresses or bank accounts.
-- **Scale.** The queries run in milliseconds on ~30k rows. For 10M+ rows the window functions would need partition-friendly indexes (for example `payments (vendor_id, amount_usd, payment_date)`, already created) and possibly date-partitioned tables.
+- **Scale.** Tested up to about a million rows on one local server (see [Scale](#scale)). At 10M+ rows the next steps would be date-partitioned tables, running the checks per month, and incremental runs that only look at new transactions.
 
 ## Repository layout
 
 ```
 generate_data.py      synthetic data + planted anomalies, fixed seed
 run_checks.py         schema, COPY load, validation, checks, scorecard
+benchmark.py          ~1M-row run, timings with and without indexes
 sql/                  00_schema.sql and one file per check
 data/                 generated CSVs, ground_truth.csv, near_misses.csv
-results/              one CSV per check + scorecard.csv
+results/              one CSV per check, scorecard.csv, benchmark results
 tests/                pytest on a tiny generated dataset in a separate database
 docs/spec.md          the specification and design decisions
 ```

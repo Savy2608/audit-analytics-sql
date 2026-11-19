@@ -1,0 +1,29 @@
+Sort  (cost=53336.77..53576.87 rows=96041 width=83) (actual time=207.198..207.200 rows=28 loops=1)
+  Sort Key: ordered_payments.payment_date, ordered_payments.payment_id
+  Sort Method: quicksort  Memory: 27kB
+  Buffers: shared hit=290972
+  ->  Hash Join  (cost=294.30..40789.72 rows=96041 width=83) (actual time=1.107..207.188 rows=28 loops=1)
+        Hash Cond: (ordered_payments.vendor_id = v.vendor_id)
+        Buffers: shared hit=290972
+        ->  Subquery Scan on ordered_payments  (cost=0.55..40003.62 rows=96041 width=62) (actual time=0.493..206.512 rows=28 loops=1)
+              Filter: ((ordered_payments.previous_payment_date IS NOT NULL) AND ((ordered_payments.payment_date - ordered_payments.previous_payment_date) <= 7))
+              Rows Removed by Filter: 289544
+              Buffers: shared hit=290847
+              ->  WindowAgg  (cost=0.55..35660.04 rows=289572 width=94) (actual time=0.034..200.550 rows=289572 loops=1)
+                    Buffers: shared hit=290847
+                    ->  Incremental Sort  (cost=0.55..28420.74 rows=289572 width=26) (actual time=0.032..137.821 rows=289572 loops=1)
+                          Sort Key: payments.vendor_id, payments.amount_usd, payments.payment_date, payments.payment_id
+                          Presorted Key: payments.vendor_id, payments.amount_usd, payments.payment_date
+                          Full-sort Groups: 9050  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+                          Buffers: shared hit=290847
+                          ->  Index Scan using idx_payments_vendor_amount on payments  (cost=0.42..19839.97 rows=289572 width=26) (actual time=0.004..101.617 rows=289572 loops=1)
+                                Buffers: shared hit=290847
+        ->  Hash  (cost=200.00..200.00 rows=7500 width=23) (actual time=0.612..0.612 rows=7500 loops=1)
+              Buckets: 8192  Batches: 1  Memory Usage: 471kB
+              Buffers: shared hit=125
+              ->  Seq Scan on vendors v  (cost=0.00..200.00 rows=7500 width=23) (actual time=0.001..0.272 rows=7500 loops=1)
+                    Buffers: shared hit=125
+Planning:
+  Buffers: shared hit=6
+Planning Time: 0.154 ms
+Execution Time: 207.224 ms

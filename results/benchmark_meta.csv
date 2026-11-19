@@ -1,0 +1,2 @@
+total_rows,generate_s,load_s,machine,repeats,employees,vendors,invoices,payments,journal_entries
+1009072,8.3,16.4,"Apple M5 Pro, PostgreSQL 16.16, local server",3,2000,7500,300000,289572,410000

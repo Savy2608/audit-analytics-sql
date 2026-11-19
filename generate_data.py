@@ -15,6 +15,7 @@ Usage:
 
 import argparse
 import csv
+import itertools
 import math
 import random
 from datetime import date, datetime, timedelta
@@ -238,6 +239,7 @@ class DatasetGenerator:
         # Background activity is skewed: some vendors bill far more often than others
         self.background_vendors = by_role("regular") + by_role("fictitious") + by_role("inactive")
         self.background_weights = [self.rng.lognormvariate(0, 0.8) for _ in self.background_vendors]
+        self.background_cum_weights = list(itertools.accumulate(self.background_weights))  # fast sampling at scale
 
     # ------------------------------- invoices -------------------------------
     def _approver_for(self, amount, exclude):
@@ -282,7 +284,7 @@ class DatasetGenerator:
 
         # Background invoices
         for _ in range(n_background):
-            vendor_id = rng.choices(self.background_vendors, self.background_weights)[0]
+            vendor_id = rng.choices(self.background_vendors, cum_weights=self.background_cum_weights)[0]
             last_day = YEAR_END
             inactive_date = self.vendor_by_id[vendor_id]["inactive_date"]
             if inactive_date:

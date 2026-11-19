@@ -18,7 +18,7 @@ load_dotenv(ROOT / ".env")
 TINY = dict(seed=42, employees=30, vendors=60, invoices=1500, journal_entries=3000)
 
 
-def test_database_name():
+def database_name_for_tests():
     return os.getenv("TEST_PGDATABASE", "audit_test")
 
 
@@ -31,7 +31,7 @@ def tiny_data(tmp_path_factory):
 
 @pytest.fixture(scope="session")
 def db(tiny_data):
-    conn = run_checks.setup_database(tiny_data, test_database_name())
+    conn = run_checks.setup_database(tiny_data, database_name_for_tests())
     yield conn
     conn.close()
 
