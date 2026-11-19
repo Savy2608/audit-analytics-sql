@@ -1,0 +1,61 @@
+employee_id,name,department,role,address,bank_account,approval_limit_usd
+E001,Allison Hill,Procurement,manager,"18196 Anthony Forge, New Carolyn, OH 26563",FAKEBANK-DZHEDZTUBC,250000.00
+E002,Meredith Barnes,Operations,manager,"402 Peterson Drives Apt. 511, Davisstad, PA 35172",FAKEBANK-SAGWTHU3A3,250000.00
+E003,Monica Herrera,Procurement,manager,"84959 Janet Cape Apt. 413, South Joshuastad, GA 49021",FAKEBANK-PJG2DNMMJB,250000.00
+E004,Michael Miles,IT,manager,"283 Steven Groves, Lake Mark, WI 07832",FAKEBANK-T9NT4V5UYB,250000.00
+E005,Andrew Stewart,Operations,manager,"39537 Wilkerson Row Suite 242, Lake Anna, KS 98413",FAKEBANK-2955NQ4FMX,250000.00
+E006,Stephanie Ross,Procurement,manager,"87101 Courtney Turnpike, Carlsonfurt, MS 78605",FAKEBANK-7WVFZFN9WT,250000.00
+E007,Kendra Maddox DVM,Procurement,manager,"184 Rodriguez Mews, South Aaron, VA 94830",FAKEBANK-L2B43NC7UY,250000.00
+E008,Jonathan White,Accounts Payable,ap_supervisor,"489 Eric Track, New Stephanie, NC 00575",FAKEBANK-GR6WEEZTZP,5000.00
+E009,Katherine Rodriguez,Accounts Payable,ap_supervisor,"3039 Christopher Oval Apt. 822, Arroyoburgh, KS 69664",FAKEBANK-UM9ER25EFX,5000.00
+E010,Jenny Lewis,Accounts Payable,ap_supervisor,"465 Lam Mission, East Jeffreymouth, AK 77611",FAKEBANK-VNVQJT8XD6,5000.00
+E011,Leah Smith,Accounts Payable,ap_supervisor,"10518 Joshua Oval, New David, FM 75348",FAKEBANK-22LKFAZZ92,5000.00
+E012,Dana Kennedy,Accounts Payable,ap_clerk,"11656 Owens Stream Apt. 106, Laurenville, IA 25613",FAKEBANK-SDW4SGMF87,0.00
+E013,Jerry Henderson,Accounts Payable,ap_clerk,"3178 Brent Plains Apt. 132, Tuckerborough, VI 53066",FAKEBANK-7VRDM93HHU,0.00
+E014,Carmen Smith,Accounts Payable,ap_clerk,"7468 Moore Hill Apt. 098, Lake Leeton, OR 62994",FAKEBANK-CZ49TEX8FS,0.00
+E015,Sarah Moore,Accounts Payable,ap_clerk,"19136 Shelly Port, New Brooke, RI 11246",FAKEBANK-V872YYNXM6,0.00
+E016,Kevin Mills,Accounts Payable,ap_clerk,"53462 Bryant Terrace Apt. 079, North Amandahaven, KS 17862",FAKEBANK-QHCATUAYBC,0.00
+E017,Shirley Suarez,Accounts Payable,ap_clerk,"2784 Elizabeth Plaza Suite 124, North Juliaberg, KY 37431",FAKEBANK-BLSJRTZ6UH,0.00
+E018,Michelle Harris,General Ledger,accountant,"740 Cynthia Village Suite 005, Lake Tina, GA 97655",FAKEBANK-RPDXMP5BWW,0.00
+E019,Michael Hoffman,General Ledger,accountant,"28059 Russell Canyon, Michaelton, MH 47399",FAKEBANK-BZ3DGTEFQ5,0.00
+E020,David Garcia,General Ledger,accountant,"232 Nicole Burg Apt. 563, Erikville, MS 05576",FAKEBANK-C35DWTAC2H,0.00
+E021,Courtney Velasquez,General Ledger,accountant,"4330 Raymond Harbors Apt. 458, Frazierside, MA 04118",FAKEBANK-PR56FAN73K,0.00
+E022,Wesley White,General Ledger,accountant,"19655 Obrien Pass Apt. 693, Bradleychester, AL 68647",FAKEBANK-YZ3XRGGBZB,0.00
+E023,Kimberly Ball,General Ledger,accountant,"6159 Alvarado Crossing, Williamchester, MD 53244",FAKEBANK-LBR7SBS5CC,0.00
+E024,Kristen Lee,General Ledger,accountant,"299 Sullivan Village Apt. 443, Floydmouth, NH 58406",FAKEBANK-5N8UUBCXUL,0.00
+E025,Daniel Kennedy,General Ledger,accountant,"148 Davis Terrace, Lake Lance, AS 26601",FAKEBANK-JXLJEWQ77A,0.00
+E026,Angel Riggs,General Ledger,accountant,"6936 Ross Drive, Port Michelleville, WI 56225",FAKEBANK-VUDTSEMCHK,0.00
+E027,Robert Dominguez,General Ledger,accountant,"83172 Contreras Points Suite 798, Rivasside, NV 21362",FAKEBANK-QTK93SXT7D,0.00
+E028,Karen Green,General Ledger,accountant,"487 Joshua Club, Jimmymouth, MD 71299",FAKEBANK-6J6ZEKGLX5,0.00
+E029,Chris Reyes,General Ledger,accountant,"316 Rivera Mountain, Brownchester, MS 77057",FAKEBANK-SJ7BW4BLE9,0.00
+E030,Alicia Gilmore,General Ledger,accountant,"0546 Medina Street Apt. 734, Tuckerfurt, MA 88171",FAKEBANK-FQYTD8YEBM,0.00
+E031,Jennifer Martin,General Ledger,accountant,"98069 Christopher Meadow Apt. 720, Nicholasborough, NH 43341",FAKEBANK-TPBM79BMXX,0.00
+E032,Shawn Ramirez,General Ledger,accountant,"1708 Zoe Keys Apt. 100, East Mary, RI 20474",FAKEBANK-MT59Z7HF3F,0.00
+E033,John Wilson,HR,staff,"4529 Kimberly Estates, Danieltown, ME 75971",FAKEBANK-AZL7353J3D,0.00
+E034,Tina Sanders,Operations,staff,"93149 Laura Port, West Amandastad, CA 66818",FAKEBANK-5H4QK3HAGL,0.00
+E035,Alexandria Fisher,Operations,staff,"65726 Jessica Run Suite 987, Grahamshire, KY 42746",FAKEBANK-8JWN9T8D9F,0.00
+E036,Sandra Miller,IT,staff,"79965 Troy Islands Apt. 735, Matthewview, OH 01831",FAKEBANK-BVM3P9D6GB,0.00
+E037,Cheryl Allen,HR,staff,"8377 Mcguire Course Suite 363, Elizabethstad, NJ 73045",FAKEBANK-A7TZZXMCXL,0.00
+E038,Jessica Reese,IT,staff,"7444 David Fields Suite 182, East Joanna, KY 95473",FAKEBANK-XD6SXLYTGX,0.00
+E039,Paige Carlson,HR,staff,"43524 Jean Crossroad, Brandonton, OH 38791",FAKEBANK-X6VKTAKPUW,0.00
+E040,Beth Oneill,HR,staff,"09477 Peterson Center Suite 711, Vasquezshire, SC 90475",FAKEBANK-QXS38ZXKXV,0.00
+E041,Chase Hart,Operations,staff,"31869 Kimberly Light Suite 749, Torreston, RI 97505",FAKEBANK-42XHGAHR5C,0.00
+E042,Phillip Garrett,HR,staff,"123 Andrea Estate Apt. 679, Carterbury, LA 93163",FAKEBANK-6UYNNEY656,0.00
+E043,Scott Jones,HR,staff,"9361 Deborah Grove, North Brian, WY 40820",FAKEBANK-H3YQT7DEQS,0.00
+E044,Samantha Morse,Procurement,staff,"74648 Kim Rapid Apt. 659, Anthonybury, TX 75893",FAKEBANK-V86VZS4T6Z,0.00
+E045,Alicia Hubbard,HR,staff,"027 Moon Falls Suite 717, Rickymouth, TN 14211",FAKEBANK-Q24J2RHQYH,0.00
+E046,Erin Steele,IT,staff,"680 Miller Glen Suite 168, Lake Mollymouth, MT 07605",FAKEBANK-LTEHYYCPTP,0.00
+E047,Isaiah Avila,Sales,staff,"34824 Gilmore Oval Apt. 093, West Andrea, OH 53977",FAKEBANK-4N28A6UR8K,0.00
+E048,Willie Durham,HR,staff,"27484 Davenport Mountains Apt. 782, Leehaven, WA 18393",FAKEBANK-58PZTVHHPA,0.00
+E049,Desiree Tyler,IT,staff,"8404 Monroe Prairie Suite 278, Reedside, WV 71729",FAKEBANK-X3Z479T7UX,0.00
+E050,Timothy Kane,Operations,staff,"636 Louis Mountains, Hughesberg, NM 05353",FAKEBANK-WEQBNGL2N2,0.00
+E051,Vincent Rivera,HR,staff,"1870 Robert Shoal, North Terrance, KS 44876",FAKEBANK-JCAT9MW2W2,0.00
+E052,Jennifer Miller,Sales,staff,"865 Brennan Camp Apt. 343, South Tiffanyville, NV 22306",FAKEBANK-GAEEXUGY2F,0.00
+E053,Stephanie Williams,Procurement,staff,"5562 Amanda Port, East Gregory, RI 50641",FAKEBANK-8Y2FKU7U7N,0.00
+E054,Cynthia Durham,Marketing,staff,"74740 Santana Springs, North Scott, MI 77515",FAKEBANK-GU4HYKX33U,0.00
+E055,Victor Vaughn,Operations,staff,"3671 Patrick Knolls Suite 406, Alanton, PW 79983",FAKEBANK-MPMSL54D8W,0.00
+E056,Sandra Leach,HR,staff,"533 Byrd Stravenue, Lake Colton, SC 85218",FAKEBANK-YPZ8J3TRPZ,0.00
+E057,Richard Johnson,IT,staff,"214 Burgess Extensions Apt. 285, Mariaview, PW 63657",FAKEBANK-LH7JQ2UXLR,0.00
+E058,Elizabeth Harrell,IT,staff,"1236 Davis Locks, West Amandamouth, MN 88689",FAKEBANK-FG3L6YJA8C,0.00
+E059,Deborah James,Marketing,staff,"37098 Herman Forges Apt. 746, East Brandonton, ME 65070",FAKEBANK-PTHRYQAKNH,0.00
+E060,David Medina,Marketing,staff,"5869 Nicole Shoal Apt. 796, Antoniostad, IL 58616",FAKEBANK-URSPZLYJJD,0.00
