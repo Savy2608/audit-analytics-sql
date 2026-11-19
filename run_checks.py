@@ -248,7 +248,7 @@ def readme_blocks(scorecard, outputs, truth):
     fp = int(scorecard["false_positives"].sum())
     noisy = scorecard[scorecard["false_positives"] > 0]
     fp_text = ", ".join(f"`{r.check_name}` ({r.false_positives})" for r in noisy.itertuples())
-    summary = (f"On the default dataset (seed 42) the seven checks caught **{caught} of {planted}** "
+    summary = (f"On the committed dataset (`data/`, seed 42) the seven checks caught **{caught} of {planted}** "
                f"planted anomalies and raised **{fp}** false positives"
                + (f", all from {fp_text}." if fp_text else "."))
 
@@ -259,10 +259,10 @@ def readme_blocks(scorecard, outputs, truth):
 
     examples = []
     for i, (name, df) in enumerate(outputs.items(), start=1):
-        # Up to two true positives and, if the check has any, one false positive
+        # Two true positives plus one false positive if the check has any, else three true positives
         is_planted = df["record_id"].isin(truth.get(name, set()))
-        picks = pd.concat([df[is_planted].head(2), df[~is_planted].head(1)])
-        picks = picks if len(picks) >= 3 or is_planted.all() else pd.concat([picks, df[is_planted].iloc[2:3]])
+        false_positives = df[~is_planted].head(1)
+        picks = pd.concat([df[is_planted].head(3 - len(false_positives)), false_positives])
         sample = picks[EXAMPLE_COLUMNS[name]].copy()
         sample["planted?"] = ["yes" if x in truth.get(name, set()) else "no" for x in sample["record_id"]]
         sample = sample.astype(object).where(sample.notna(), None)
@@ -321,6 +321,8 @@ def main(argv=None):
         explained = recon["unpaid_invoices_usd"] - recon["overpaid_usd"]
         gap = recon["invoices_total_usd"] - recon["payments_total_usd"] - explained
         print(f"  unexplained difference    {gap:>16,.2f} USD")
+        if gap != 0 or recon["unmatched_payments"] > 0:
+            raise SystemExit("Data validation failed: reconciliation does not tie out. Checks not run.")
 
         scorecard, outputs = run_all_checks(conn, args.data_dir, results_dir)
 
@@ -329,6 +331,8 @@ def main(argv=None):
     print(scorecard.to_string(index=False))
 
     if args.update_readme:
+        if Path(args.data_dir).resolve() != (ROOT / "data").resolve():
+            raise SystemExit("--update-readme only works with the default data/ directory")
         truth = load_labels(args.data_dir, "ground_truth.csv")
         update_readme(readme_blocks(scorecard, outputs, truth))
         print("\nREADME.md tables updated from this run")

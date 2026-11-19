@@ -1,6 +1,6 @@
 record_id,vendor_name,employee_id,employee_name,department,matched_on,payments_to_vendor,paid_to_vendor_usd
-V0032,"Rivera, Martinez and Richardson",E055,Victor Vaughn,Operations,address,32,61322.34
-V0070,Taylor-Mccoy,E015,Sarah Moore,Accounts Payable,address,58,129465.60
-V0087,"Lopez, Davidson and Reynolds",E040,Beth Oneill,HR,address,10,10759.29
-V0111,"Mccullough, Hodges and Sanchez",E044,Samantha Morse,Procurement,bank account,48,78118.11
-V0176,Martin and Sons,E035,Alexandria Fisher,Operations,bank account,44,121778.34
+V0032,"Rivera, Martinez and Richardson",E055,Victor Vaughn,Operations,address,9,25762.68
+V0070,Taylor-Mccoy,E015,Sarah Moore,Accounts Payable,address,44,89397.35
+V0087,"Lopez, Davidson and Reynolds",E040,Beth Oneill,HR,address,25,52223.98
+V0111,"Mccullough, Hodges and Sanchez",E044,Samantha Morse,Procurement,bank account,44,74523.64
+V0176,Martin and Sons,E035,Alexandria Fisher,Operations,bank account,54,120780.10

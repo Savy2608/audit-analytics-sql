@@ -27,6 +27,8 @@ def test_full_scorecard_on_tiny_data(db, tiny_data):
     assert list(scorecard["check_name"]) == [
         "duplicate_payments", "split_invoices", "self_approval", "weekend_round_entries",
         "vendor_employee_match", "inactive_vendor_payments", "benford_first_digit"]
-    assert (scorecard["true_positives"] + scorecard["missed"] == scorecard["planted"]).all()
-    assert (scorecard["true_positives"] + scorecard["false_positives"] == scorecard["flagged"]).all()
-    assert all("record_id" in df.columns for df in outputs.values())
+    assert (scorecard["recall"] == 1.0).all()
+    assert (scorecard["near_misses_flagged"] == 0).all()
+    # the scorecard row must agree with the check's own output
+    for row in scorecard.itertuples():
+        assert row.flagged == outputs[row.check_name]["record_id"].nunique()

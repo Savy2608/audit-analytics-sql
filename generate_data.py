@@ -227,7 +227,7 @@ class DatasetGenerator:
                 vendor["bank_account"] = self._unique_bank_account()
             if role == "inactive":
                 vendor["status"] = "inactive"
-                vendor["inactive_date"] = random_date(self.rng, date(2025, 3, 1), date(2025, 9, 30))
+                vendor["inactive_date"] = random_weekday(self.rng, date(2025, 3, 1), date(2025, 9, 30))
             self.vendors.append(vendor)
 
         self.vendor_by_id = {v["vendor_id"]: v for v in self.vendors}
@@ -350,7 +350,9 @@ class DatasetGenerator:
                 tag = ("inactive_vendor_payments", "planted")
             else:
                 invoice_date = random_weekday(rng, closed - timedelta(days=40), closed - timedelta(days=25))
-                pay_date = previous_weekday(closed - timedelta(days=rng.randint(1, 3)))
+                # the last few are paid on the inactive date itself, which the rule allows
+                days_before = 0 if i >= N_INACTIVE_VENDOR_PAYMENTS + N_INACTIVE_NEAR_MISSES - 3 else rng.randint(1, 3)
+                pay_date = previous_weekday(closed - timedelta(days=days_before))
                 tag = ("inactive_vendor_payments", "near_miss")
             invoice = self._new_invoice(
                 vendor_id, invoice_date, lognormal_amount(rng, 1200, 1.1, 25, 150000),
@@ -463,15 +465,17 @@ class DatasetGenerator:
 
         # Check 4: round manual entries on weekends or late at night
         round_amounts = [5000, 10000, 15000, 20000, 25000, 50000, 75000, 100000]
+        weekend_days = [YEAR_START + timedelta(days=d) for d in range(365)
+                        if is_weekend(YEAR_START + timedelta(days=d))]
         for i in range(N_WEEKEND_ROUND_ENTRIES):
             if i % 2 == 0:
-                day = random_date(rng, YEAR_START, YEAR_END)
-                while not is_weekend(day):
-                    day += timedelta(days=1)
+                day = rng.choice(weekend_days)
                 when = datetime(day.year, day.month, day.day, rng.randint(9, 16), rng.randint(0, 59))
             else:
+                # late night: 22:00-23:59 or after midnight up to 05:59
                 day = random_weekday(rng, YEAR_START, YEAR_END)
-                when = datetime(day.year, day.month, day.day, rng.randint(22, 23), rng.randint(0, 59))
+                when = datetime(day.year, day.month, day.day,
+                                rng.choice([22, 23, 0, 1, 2, 3, 4, 5]), rng.randint(0, 59))
             add(when, float(rng.choice(round_amounts)), rng.choice(self.accountants),
                 account=rng.choice(["2100 Accrued Liabilities", "6300 Professional Fees"]),
                 description="Manual adjustment", tag=("weekend_round_entries", "planted"))

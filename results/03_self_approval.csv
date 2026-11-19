@@ -1,41 +1,41 @@
 record_id,record_type,employee_id,employee_name,department,role,record_date,amount_usd
-INV00114,invoice,E003,Monica Herrera,Procurement,manager,2025-01-03,2792.02
-INV01980,invoice,E004,Michael Miles,IT,manager,2025-03-14,2855.09
-INV01981,invoice,E003,Monica Herrera,Procurement,manager,2025-03-14,3172.44
-INV02561,invoice,E006,Stephanie Ross,Procurement,manager,2025-04-09,1064.50
-INV02875,invoice,E008,Jonathan White,Accounts Payable,ap_supervisor,2025-04-23,1707.96
-INV03669,invoice,E001,Allison Hill,Procurement,manager,2025-05-30,3633.11
-INV03847,invoice,E007,Kendra Maddox DVM,Procurement,manager,2025-06-09,2657.96
-INV03848,invoice,E003,Monica Herrera,Procurement,manager,2025-06-09,1721.11
-INV04299,invoice,E004,Michael Miles,IT,manager,2025-07-01,4674.08
-INV04456,invoice,E007,Kendra Maddox DVM,Procurement,manager,2025-07-09,4099.34
-INV04692,invoice,E011,Leah Smith,Accounts Payable,ap_supervisor,2025-07-22,4487.88
-INV05191,invoice,E004,Michael Miles,IT,manager,2025-08-14,4589.19
-INV05216,invoice,E003,Monica Herrera,Procurement,manager,2025-08-15,4352.12
-INV05351,invoice,E004,Michael Miles,IT,manager,2025-08-22,4478.36
-INV05630,invoice,E005,Andrew Stewart,Operations,manager,2025-09-05,1244.14
-INV05631,invoice,E011,Leah Smith,Accounts Payable,ap_supervisor,2025-09-05,2720.94
-INV05743,invoice,E009,Katherine Rodriguez,Accounts Payable,ap_supervisor,2025-09-11,2664.56
-INV06488,invoice,E006,Stephanie Ross,Procurement,manager,2025-10-17,1567.72
-INV06998,invoice,E007,Kendra Maddox DVM,Procurement,manager,2025-11-12,1550.29
-INV07148,invoice,E004,Michael Miles,IT,manager,2025-11-19,4062.62
-JE00099,journal_entry,E018,Michelle Harris,General Ledger,accountant,2025-01-02,328.19
-JE01088,journal_entry,E025,Daniel Kennedy,General Ledger,accountant,2025-01-27,1028.33
-JE01438,journal_entry,E018,Michelle Harris,General Ledger,accountant,2025-02-04,784.07
-JE02323,journal_entry,E030,Alicia Gilmore,General Ledger,accountant,2025-02-26,493.19
-JE02372,journal_entry,E018,Michelle Harris,General Ledger,accountant,2025-02-27,590.72
-JE02437,journal_entry,E022,Wesley White,General Ledger,accountant,2025-02-28,79.24
-JE02581,journal_entry,E030,Alicia Gilmore,General Ledger,accountant,2025-03-04,1291.19
-JE03142,journal_entry,E031,Jennifer Martin,General Ledger,accountant,2025-03-18,176.69
-JE03646,journal_entry,E031,Jennifer Martin,General Ledger,accountant,2025-04-01,3578.13
-JE04557,journal_entry,E026,Angel Riggs,General Ledger,accountant,2025-04-22,577.57
-JE04683,journal_entry,E018,Michelle Harris,General Ledger,accountant,2025-04-24,36.06
-JE06202,journal_entry,E018,Michelle Harris,General Ledger,accountant,2025-06-02,242.11
-JE08451,journal_entry,E023,Kimberly Ball,General Ledger,accountant,2025-07-25,5052.62
-JE09120,journal_entry,E026,Angel Riggs,General Ledger,accountant,2025-08-12,45.30
-JE09637,journal_entry,E027,Robert Dominguez,General Ledger,accountant,2025-08-25,357.89
-JE11411,journal_entry,E029,Chris Reyes,General Ledger,accountant,2025-10-06,5808.73
-JE12195,journal_entry,E028,Karen Green,General Ledger,accountant,2025-10-24,439.14
-JE12491,journal_entry,E026,Angel Riggs,General Ledger,accountant,2025-10-31,10916.75
-JE12905,journal_entry,E027,Robert Dominguez,General Ledger,accountant,2025-11-12,3406.77
-JE14229,journal_entry,E032,Shawn Ramirez,General Ledger,accountant,2025-12-12,2119.69
+INV00537,invoice,E010,Jenny Lewis,Accounts Payable,ap_supervisor,2025-01-21,1785.14
+INV00795,invoice,E003,Monica Herrera,Procurement,manager,2025-01-30,4247.12
+INV00834,invoice,E008,Jonathan White,Accounts Payable,ap_supervisor,2025-01-31,1761.60
+INV02098,invoice,E007,Kendra Maddox DVM,Procurement,manager,2025-03-24,884.41
+INV02423,invoice,E010,Jenny Lewis,Accounts Payable,ap_supervisor,2025-04-07,995.76
+INV02818,invoice,E001,Allison Hill,Procurement,manager,2025-04-24,1015.47
+INV03492,invoice,E009,Katherine Rodriguez,Accounts Payable,ap_supervisor,2025-05-27,1953.09
+INV03526,invoice,E003,Monica Herrera,Procurement,manager,2025-05-28,2822.64
+INV04112,invoice,E002,Meredith Barnes,Operations,manager,2025-06-23,4830.80
+INV04402,invoice,E009,Katherine Rodriguez,Accounts Payable,ap_supervisor,2025-07-08,3492.66
+INV05002,invoice,E004,Michael Miles,IT,manager,2025-08-06,3307.24
+INV05238,invoice,E003,Monica Herrera,Procurement,manager,2025-08-18,492.74
+INV05440,invoice,E007,Kendra Maddox DVM,Procurement,manager,2025-08-27,4728.96
+INV05528,invoice,E004,Michael Miles,IT,manager,2025-09-01,3269.83
+INV05805,invoice,E011,Leah Smith,Accounts Payable,ap_supervisor,2025-09-15,2958.82
+INV06083,invoice,E007,Kendra Maddox DVM,Procurement,manager,2025-09-29,2904.48
+INV06515,invoice,E010,Jenny Lewis,Accounts Payable,ap_supervisor,2025-10-20,3701.25
+INV06627,invoice,E008,Jonathan White,Accounts Payable,ap_supervisor,2025-10-24,2863.63
+INV07210,invoice,E007,Kendra Maddox DVM,Procurement,manager,2025-11-21,3388.93
+INV07236,invoice,E010,Jenny Lewis,Accounts Payable,ap_supervisor,2025-11-24,2191.65
+JE02077,journal_entry,E032,Shawn Ramirez,General Ledger,accountant,2025-02-20,9577.96
+JE02977,journal_entry,E020,David Garcia,General Ledger,accountant,2025-03-13,1154.49
+JE03345,journal_entry,E028,Karen Green,General Ledger,accountant,2025-03-24,189.79
+JE04978,journal_entry,E031,Jennifer Martin,General Ledger,accountant,2025-05-02,303.97
+JE06183,journal_entry,E030,Alicia Gilmore,General Ledger,accountant,2025-05-30,10180.46
+JE06508,journal_entry,E032,Shawn Ramirez,General Ledger,accountant,2025-06-09,1531.12
+JE06991,journal_entry,E032,Shawn Ramirez,General Ledger,accountant,2025-06-20,1489.19
+JE07037,journal_entry,E028,Karen Green,General Ledger,accountant,2025-06-23,1916.42
+JE08281,journal_entry,E019,Michael Hoffman,General Ledger,accountant,2025-07-21,1825.24
+JE08423,journal_entry,E022,Wesley White,General Ledger,accountant,2025-07-24,6033.34
+JE08872,journal_entry,E020,David Garcia,General Ledger,accountant,2025-08-05,3129.38
+JE10419,journal_entry,E023,Kimberly Ball,General Ledger,accountant,2025-09-11,59.63
+JE10628,journal_entry,E020,David Garcia,General Ledger,accountant,2025-09-17,1964.01
+JE10643,journal_entry,E027,Robert Dominguez,General Ledger,accountant,2025-09-17,3829.60
+JE10963,journal_entry,E025,Daniel Kennedy,General Ledger,accountant,2025-09-25,190.45
+JE11877,journal_entry,E025,Daniel Kennedy,General Ledger,accountant,2025-10-16,3217.46
+JE13575,journal_entry,E020,David Garcia,General Ledger,accountant,2025-11-27,173.35
+JE13597,journal_entry,E019,Michael Hoffman,General Ledger,accountant,2025-11-27,1097.66
+JE13641,journal_entry,E020,David Garcia,General Ledger,accountant,2025-11-28,953.70
+JE13942,journal_entry,E024,Kristen Lee,General Ledger,accountant,2025-12-05,2448.02

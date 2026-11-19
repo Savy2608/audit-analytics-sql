@@ -1,8 +1,7 @@
 -- Check 2: Split invoices
--- Risk:      one person splits a purchase into several smaller invoices so that each one
---            stays under the 5,000 USD limit and avoids manager approval.
--- Rule:      2+ invoices from the same vendor, entered by the same employee in the same
---            calendar week (Mon-Sun), each under 5,000 USD, together over 5,000 USD.
+-- Risk:      one person splits a purchase so each invoice avoids manager approval.
+-- Rule:      2+ invoices, same vendor, same clerk (created_by), same calendar week (Mon-Sun),
+--            each under 5,000 USD, together over 5,000 USD.
 -- Threshold: 5,000 USD approval limit; grouping window = one calendar week.
 
 WITH invoices_under_limit AS (

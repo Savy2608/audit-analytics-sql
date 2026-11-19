@@ -40,3 +40,4 @@ jobs:
           python generate_data.py
           python run_checks.py
           git diff --exit-code -- data results
+          test -z "$(git status --porcelain -- data results)"

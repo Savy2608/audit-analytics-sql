@@ -1,8 +1,7 @@
 -- Check 7: Benford first-digit test per employee
--- Risk:      invented amounts; people who make up numbers do not reproduce the natural
---            first-digit pattern (Benford: P(d) = log10(1 + 1/d), so ~30% start with 1).
--- Rule:      for each employee with 100+ manual journal entries, compare observed vs
---            expected first-digit counts with a chi-square statistic (8 degrees of freedom).
+-- Risk:      invented amounts miss Benford's first-digit pattern, P(d) = log10(1 + 1/d).
+-- Rule:      per employee with 100+ manual journal entries, chi-square of observed vs
+--            expected first-digit counts (8 degrees of freedom).
 -- Threshold: chi-square > 20.09 (p < 0.01). Flags a population (employee), not single entries.
 
 WITH entry_first_digits AS (

@@ -1,31 +1,31 @@
 record_id,entry_datetime,timing,account,amount_usd,source,created_by,approved_by,description
-JE01621,2025-02-08 10:52:00,weekend,6300 Professional Fees,50000.00,manual,E022,E006,Manual adjustment
-JE02180,2025-02-22 10:50:00,weekend,2100 Accrued Liabilities,5000.00,manual,E028,E004,Manual adjustment
-JE02301,2025-02-25 22:50:00,late night,6300 Professional Fees,75000.00,manual,E032,E003,Manual adjustment
-JE02485,2025-03-01 11:50:00,weekend,6300 Professional Fees,10000.00,manual,E030,E002,Manual adjustment
-JE02777,2025-03-08 13:49:00,weekend,6300 Professional Fees,75000.00,manual,E020,E007,Manual adjustment
-JE03068,2025-03-15 10:28:00,weekend,6300 Professional Fees,100000.00,manual,E019,E006,Manual adjustment
-JE03578,2025-03-29 13:30:00,weekend,2100 Accrued Liabilities,75000.00,manual,E020,E003,Manual adjustment
-JE03761,2025-04-02 23:48:00,late night,6300 Professional Fees,75000.00,manual,E020,E006,Manual adjustment
-JE04480,2025-04-20 12:13:00,weekend,2100 Accrued Liabilities,75000.00,manual,E028,E007,Manual adjustment
-JE04922,2025-04-30 22:43:00,late night,2100 Accrued Liabilities,20000.00,manual,E020,E004,Manual adjustment
-JE05039,2025-05-03 14:32:00,weekend,6300 Professional Fees,20000.00,manual,E028,E002,Manual adjustment
-JE05885,2025-05-25 13:01:00,weekend,2100 Accrued Liabilities,50000.00,manual,E022,E001,Manual adjustment
-JE06451,2025-06-06 22:36:00,late night,6300 Professional Fees,75000.00,manual,E026,E001,Manual adjustment
-JE06561,2025-06-10 22:52:00,late night,6300 Professional Fees,100000.00,manual,E028,E002,Manual adjustment
-JE07016,2025-06-21 12:16:00,weekend,6300 Professional Fees,25000.00,manual,E029,E004,Manual adjustment
-JE07646,2025-07-05 10:21:00,weekend,6300 Professional Fees,20000.00,manual,E030,E004,Manual adjustment
-JE07956,2025-07-12 09:03:00,weekend,6300 Professional Fees,25000.00,manual,E023,E007,Manual adjustment
-JE08188,2025-07-17 23:47:00,late night,2100 Accrued Liabilities,75000.00,manual,E025,E002,Manual adjustment
-JE08239,2025-07-18 23:06:00,late night,2100 Accrued Liabilities,20000.00,manual,E023,E006,Manual adjustment
-JE08442,2025-07-24 22:21:00,late night,2100 Accrued Liabilities,20000.00,manual,E032,E002,Manual adjustment
-JE08831,2025-08-04 22:24:00,late night,6300 Professional Fees,20000.00,manual,E023,E001,Manual adjustment
-JE09845,2025-08-28 22:57:00,late night,2100 Accrued Liabilities,5000.00,manual,E030,E005,Manual adjustment
-JE09963,2025-09-01 23:13:00,late night,6300 Professional Fees,50000.00,manual,E019,E003,Manual adjustment
-JE10493,2025-09-13 09:00:00,weekend,6300 Professional Fees,5000.00,manual,E028,E007,Manual adjustment
-JE10777,2025-09-19 23:17:00,late night,2100 Accrued Liabilities,10000.00,manual,E028,E005,Manual adjustment
-JE10778,2025-09-20 11:53:00,weekend,6300 Professional Fees,100000.00,manual,E019,E001,Manual adjustment
-JE11309,2025-10-02 23:02:00,late night,2100 Accrued Liabilities,50000.00,manual,E028,E001,Manual adjustment
-JE12563,2025-11-03 23:19:00,late night,6300 Professional Fees,10000.00,manual,E031,E003,Manual adjustment
-JE13676,2025-11-29 10:06:00,weekend,2100 Accrued Liabilities,10000.00,manual,E019,E007,Manual adjustment
-JE14625,2025-12-22 22:09:00,late night,6300 Professional Fees,25000.00,manual,E026,E001,Manual adjustment
+JE00166,2025-01-04 16:31:00,weekend,2100 Accrued Liabilities,10000.00,manual,E026,E002,Manual adjustment
+JE00464,2025-01-13 01:53:00,late night,2100 Accrued Liabilities,100000.00,manual,E019,E006,Manual adjustment
+JE01731,2025-02-11 23:02:00,late night,6300 Professional Fees,25000.00,manual,E019,E002,Manual adjustment
+JE01732,2025-02-12 01:05:00,late night,6300 Professional Fees,5000.00,manual,E032,E003,Manual adjustment
+JE01733,2025-02-12 04:42:00,late night,2100 Accrued Liabilities,50000.00,manual,E031,E005,Manual adjustment
+JE01887,2025-02-17 05:21:00,late night,6300 Professional Fees,5000.00,manual,E019,E003,Manual adjustment
+JE02184,2025-02-22 11:31:00,weekend,6300 Professional Fees,15000.00,manual,E024,E004,Manual adjustment
+JE02186,2025-02-22 15:03:00,weekend,6300 Professional Fees,5000.00,manual,E028,E003,Manual adjustment
+JE02365,2025-02-26 22:05:00,late night,2100 Accrued Liabilities,20000.00,manual,E019,E004,Manual adjustment
+JE02487,2025-02-28 22:00:00,late night,2100 Accrued Liabilities,20000.00,manual,E027,E003,Manual adjustment
+JE02562,2025-03-04 02:19:00,late night,2100 Accrued Liabilities,25000.00,manual,E032,E004,Manual adjustment
+JE03319,2025-03-23 09:33:00,weekend,6300 Professional Fees,20000.00,manual,E019,E002,Manual adjustment
+JE03883,2025-04-05 11:49:00,weekend,6300 Professional Fees,75000.00,manual,E022,E006,Manual adjustment
+JE03886,2025-04-06 13:48:00,weekend,2100 Accrued Liabilities,25000.00,manual,E025,E003,Manual adjustment
+JE04174,2025-04-14 05:03:00,late night,2100 Accrued Liabilities,25000.00,manual,E019,E005,Manual adjustment
+JE05042,2025-05-03 09:42:00,weekend,2100 Accrued Liabilities,5000.00,manual,E029,E005,Manual adjustment
+JE05335,2025-05-12 04:49:00,late night,6300 Professional Fees,15000.00,manual,E023,E002,Manual adjustment
+JE05833,2025-05-23 03:48:00,late night,2100 Accrued Liabilities,5000.00,manual,E030,E005,Manual adjustment
+JE06191,2025-06-02 02:49:00,late night,6300 Professional Fees,10000.00,manual,E026,E006,Manual adjustment
+JE06455,2025-06-07 09:06:00,weekend,2100 Accrued Liabilities,20000.00,manual,E028,E002,Manual adjustment
+JE06458,2025-06-08 12:11:00,weekend,2100 Accrued Liabilities,50000.00,manual,E027,E007,Manual adjustment
+JE07648,2025-07-05 14:23:00,weekend,2100 Accrued Liabilities,75000.00,manual,E019,E001,Manual adjustment
+JE09056,2025-08-10 16:26:00,weekend,2100 Accrued Liabilities,15000.00,manual,E018,E002,Manual adjustment
+JE10775,2025-09-20 10:13:00,weekend,2100 Accrued Liabilities,100000.00,manual,E028,E007,Manual adjustment
+JE11071,2025-09-28 09:27:00,weekend,6300 Professional Fees,5000.00,manual,E030,E004,Manual adjustment
+JE11072,2025-09-28 16:23:00,weekend,6300 Professional Fees,75000.00,manual,E023,E007,Manual adjustment
+JE11376,2025-10-05 10:30:00,weekend,2100 Accrued Liabilities,15000.00,manual,E025,E003,Manual adjustment
+JE12343,2025-10-29 00:12:00,late night,2100 Accrued Liabilities,25000.00,manual,E022,E003,Manual adjustment
+JE12890,2025-11-12 03:15:00,late night,6300 Professional Fees,25000.00,manual,E025,E001,Manual adjustment
+JE14888,2025-12-30 04:52:00,late night,6300 Professional Fees,5000.00,manual,E020,E001,Manual adjustment

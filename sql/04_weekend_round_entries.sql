@@ -1,8 +1,7 @@
 -- Check 4: Weekend or late-night entries with round amounts
--- Risk:      manual journal entries made outside the normal process (top-side adjustments,
---            entries timed to avoid review) tend to be posted off-hours with round numbers.
--- Rule:      posted on a Saturday/Sunday OR between 22:00 and 05:59, AND the amount is a
---            whole multiple of 1,000 USD. Both conditions must hold.
+-- Risk:      manual entries outside the normal process, posted off-hours with round numbers.
+-- Rule:      (Saturday/Sunday OR 22:00-05:59) AND amount is a whole multiple of 1,000 USD.
+--            Both conditions must hold; the source label is not trusted.
 -- Threshold: business hours 06:00-21:59; "round" = multiple of 1,000.00.
 
 WITH entry_timing AS (

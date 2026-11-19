@@ -9,7 +9,7 @@ WITH normalised_vendors AS (
         vendor_id,
         name,
         bank_account,
-        lower(regexp_replace(trim(address), '\s+', ' ', 'g')) AS address_key
+        lower(trim(regexp_replace(address, '\s+', ' ', 'g'))) AS address_key
     FROM vendors
 ),
 
@@ -19,7 +19,7 @@ normalised_employees AS (
         name,
         department,
         bank_account,
-        lower(regexp_replace(trim(address), '\s+', ' ', 'g')) AS address_key
+        lower(trim(regexp_replace(address, '\s+', ' ', 'g'))) AS address_key
     FROM employees
 ),
 
